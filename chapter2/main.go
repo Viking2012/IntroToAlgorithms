@@ -26,9 +26,9 @@ func insertionSortOld(x []int) []int {
 }
 
 func insertionSort(x []int) []int {
-	i := 0 // needed to collect the last index of the downward shift
-	for j := range x {
-		key := x[j]
+	i := 0             // needed to collect the last index of the downward shift
+	for j := range x { // iterate over all the items in the array
+		key := x[j] // this is the "topmost" item in the stack
 		for i = j - 1; i >= 0 && key < x[i]; i-- {
 			x[i+1] = x[i]
 		}
