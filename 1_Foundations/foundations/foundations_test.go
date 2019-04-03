@@ -1,4 +1,4 @@
-package main
+package foundations
 
 import (
 	"testing"
@@ -17,33 +17,55 @@ var tests = []testpair{
 	{[]int{80, 12, 1, 57, 18, 57, 46, 3, 79, 36, 56, 44, 23, 55, 61, 89, 60, 1, 31, 91, 96, 4, 5, 79, 25, 7, 59, 38, 46, 71, 19, 5, 85, 96, 18, 11, 87, 40, 12, 81, 28, 35, 51, 1, 95, 16, 59, 5, 35, 9, 53, 12, 95, 20, 13, 12, 56, 72, 9, 4, 48, 50, 78, 64, 97, 13, 70, 25, 17, 71, 85, 50, 70, 19, 43, 13, 28, 70, 79, 54, 19, 63, 46, 17, 6, 56, 78, 36, 75, 41, 37, 62, 21, 85, 95, 87, 44, 22, 5, 44}, []int{1, 1, 1, 3, 4, 4, 5, 5, 5, 5, 6, 7, 9, 9, 11, 12, 12, 12, 12, 13, 13, 13, 16, 17, 17, 18, 18, 19, 19, 19, 20, 21, 22, 23, 25, 25, 28, 28, 31, 35, 35, 36, 36, 37, 38, 40, 41, 43, 44, 44, 44, 46, 46, 46, 48, 50, 50, 51, 53, 54, 55, 56, 56, 56, 57, 57, 59, 59, 60, 61, 62, 63, 64, 70, 70, 70, 71, 71, 72, 75, 78, 78, 79, 79, 79, 80, 81, 85, 85, 85, 87, 87, 89, 91, 95, 95, 95, 96, 96, 97}},
 }
 
+var ints = [...]int{74, 59, 238, -784, 9845, 959, 905, 0, 0, 42, 7586, -5467984, 7586}
+
 func TestInsertionSort(t *testing.T) {
 	for _, pair := range tests {
 		testVal := insertionSort(pair.values)
-		if (testVal == nil) != (pair.sorted == nil) {
+		if !slicesEqual(testVal, pair.sorted) {
 			t.Error(
 				"For", pair.values,
 				"expected", pair.sorted,
 				"but both were nil",
 			)
 		}
-		if len(testVal) != len(pair.sorted) {
+	}
+}
+
+func TestInsertionSortNative(t *testing.T) {
+	data := ints
+	testSlice := IntSlice(data[:])
+	insertionSortNative(testSlice, 0, len(testSlice))
+	for i := 0; i < len(testSlice)-1; i++ {
+		if testSlice[i] > testSlice[i+1] {
 			t.Error(
-				"For", pair.values,
-				"expected", pair.sorted,
-				"but both they were of different lengths",
+				"\nFor\t", ints,
+				"\ngot\t", testSlice,
 			)
-		}
-		for i := range testVal {
-			if testVal[i] != pair.sorted[i] {
-				t.Error(
-					"For element", i,
-					"expected", pair.sorted[i],
-					"got", testVal[i],
-				)
-			}
+			break
 		}
 	}
+}
+
+func slicesEqual(a []int, b []int) bool {
+	// true! a and b are nil.
+	if (a == nil) != (b == nil) {
+		return true
+	}
+
+	// false! a and b are not the same length.
+	if len(a) != len(b) {
+		return false
+	}
+	for i := range a {
+		// false! element i of a and b are not the same!"
+		if a[i] != b[i] {
+			return false
+		}
+	}
+
+	// true! Every element of a and b are the same.
+	return true
 }
 
 var result []int
@@ -56,4 +78,13 @@ func BenchmarkInsertionSort(b *testing.B) {
 	}
 
 	result = r
+}
+
+func BenchmarkInsertionSortNative(b *testing.B) {
+	data := ints
+	testSlice := IntSlice(data[:])
+	for n := 0; n < b.N; n++ {
+		native(testSlice)
+	}
+
 }
