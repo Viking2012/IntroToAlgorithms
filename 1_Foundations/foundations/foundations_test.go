@@ -2,6 +2,8 @@ package foundations
 
 import (
 	"testing"
+
+	. "github.com/Viking2012/IntroToAlgorithms/utils"
 )
 
 type testpair struct {
