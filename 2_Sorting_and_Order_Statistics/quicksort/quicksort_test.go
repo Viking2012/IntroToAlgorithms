@@ -26,9 +26,9 @@ func Test_Quicksort(t *testing.T) {
 		// testVal := Quicksort(pair.values)
 		if !interfacesEqual(testVal, pair.sorted) {
 			t.Error("\n",
-				"For", pair.values, "\n",
+				"For     ", pair.values, "\n",
 				"expected", pair.sorted, "\n",
-				"got", testVal,
+				"got     ", testVal,
 			)
 		}
 	}
