@@ -43,7 +43,7 @@ func countingsort(A, B su.Interface, k int) {
 	}
 	// fmt.Println("summed Countingsort C:", C)
 
-	for j := A.Len() - 1; j > 0; j-- {
+	for j := A.Len() - 1; j >= 0; j-- {
 		a := A.Get(j)
 		// fmt.Printf("A[%d] = %d\n", j, a)
 		c := C.Get(a)

@@ -24,7 +24,7 @@ func TestCountingsort(t *testing.T) {
 		testVal := Countingsort(pair.values)
 		if !interfacesEqual(testVal, pair.sorted) {
 			t.Error("\n",
-				"For     ", pair.values, "\n",
+				// "For     ", pair.values, "\n",
 				"Expected", pair.sorted, "\n",
 				"Got     ", testVal, "\n",
 			)
