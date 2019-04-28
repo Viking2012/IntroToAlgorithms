@@ -23,10 +23,10 @@ func TestCountingsort(t *testing.T) {
 	for _, pair := range tests {
 		testVal := Countingsort(pair.values)
 		if !interfacesEqual(testVal, pair.sorted) {
-			t.Error(
-				"For", pair.values,
-				"expected", pair.sorted,
-				"but both were nil",
+			t.Error("\n",
+				"For     ", pair.values, "\n",
+				"Expected", pair.sorted, "\n",
+				"Got     ", testVal, "\n",
 			)
 		}
 	}
