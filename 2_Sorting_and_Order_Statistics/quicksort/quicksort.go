@@ -1,6 +1,8 @@
 package quicksort
 
 import (
+	"math/rand"
+
 	su "github.com/Viking2012/IntroToAlgorithms/utils"
 )
 
@@ -9,7 +11,7 @@ import (
 func Quicksort(A su.Interface) su.Interface {
 	B := A
 
-	n := A.Len()
+	n := rand.Intn(A.Len())
 	quicksort(B, 0, n-1)
 
 	// for left, right := 0, B.Len()-1; left < right; left, right = left+1, right-1 {
