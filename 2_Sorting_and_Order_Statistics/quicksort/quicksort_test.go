@@ -58,7 +58,7 @@ func interfacesEqual(a Interface, b Interface) bool {
 var ints = [...]int{74, 59, 238, -784, 9845, 959, 905, 0, 0, 42, 7586, -5467984, 7586}
 var result Interface
 
-func BenchmarkHeapSort(b *testing.B) {
+func BenchmarkQuickSort(b *testing.B) {
 	var r Interface
 	data := ints
 	testSlice := IntSlice(data[:])
@@ -69,7 +69,7 @@ func BenchmarkHeapSort(b *testing.B) {
 	result = r
 }
 
-func BenchmarkNativeHeapsort(b *testing.B) {
+func BenchmarkNativeQuicksort(b *testing.B) {
 	var r Interface
 	for n := 0; n < b.N; n++ {
 		data := ints
