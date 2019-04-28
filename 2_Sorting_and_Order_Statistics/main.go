@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	"github.com/Viking2012/IntroToAlgorithms/2_Sorting_and_Order_Statistics/countingsort"
 	"github.com/Viking2012/IntroToAlgorithms/2_Sorting_and_Order_Statistics/heapsort"
 	"github.com/Viking2012/IntroToAlgorithms/2_Sorting_and_Order_Statistics/quicksort"
 	su "github.com/Viking2012/IntroToAlgorithms/utils"
@@ -16,13 +17,19 @@ func main() {
 
 	copy(c, xs)
 	toSort := su.IntSlice(c)
-	fmt.Println("ToSort  ", toSort)
+	// fmt.Println("ToSort  ", toSort)
 	fromHeap := heapsort.HeapSort(toSort)
 	fmt.Println("Heaped  ", fromHeap)
 
 	copy(c, xs)
 	toSort = su.IntSlice(c)
-	fmt.Println("ToSort  ", toSort)
+	// fmt.Println("ToSort  ", toSort)
 	fromQuick := quicksort.Quicksort(toSort)
-	fmt.Println("Quicked ", fromQuick)
+	fmt.Println("Quick'd  ", fromQuick)
+
+	copy(c, xs)
+	toSort = su.IntSlice(c)
+	fmt.Println("ToSort  ", toSort)
+	fromCounting := countingsort.Countingsort(toSort)
+	fmt.Println("Counted ", fromCounting)
 }
