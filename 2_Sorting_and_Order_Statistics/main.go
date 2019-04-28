@@ -25,11 +25,11 @@ func main() {
 	toSort = su.IntSlice(c)
 	// fmt.Println("ToSort  ", toSort)
 	fromQuick := quicksort.Quicksort(toSort)
-	fmt.Println("Quick'd  ", fromQuick)
+	fmt.Println("Quick'd ", fromQuick)
 
 	copy(c, xs)
 	toSort = su.IntSlice(c)
-	fmt.Println("ToSort  ", toSort)
+	// fmt.Println("ToSort  ", toSort)
 	fromCounting := countingsort.Countingsort(toSort)
 	fmt.Println("Counted ", fromCounting)
 }

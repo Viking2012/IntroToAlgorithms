@@ -24,7 +24,7 @@ func Countingsort(A su.Interface) su.Interface {
 	return B
 }
 
-func countingsort(A, B su.Interface, k int) su.IntSlice {
+func countingsort(A, B su.Interface, k int) {
 	C := make(su.IntSlice, k+1)
 
 	for j := 0; j < A.Len(); j++ {
@@ -37,7 +37,7 @@ func countingsort(A, B su.Interface, k int) su.IntSlice {
 
 	// fmt.Println("intial Countingsort C:", C)
 
-	for i := 1; i < k; i++ {
+	for i := 1; i <= k; i++ {
 		c := C.Get(i) + C.Get(i-1)
 		C.Set(i, c)
 	}
@@ -48,10 +48,8 @@ func countingsort(A, B su.Interface, k int) su.IntSlice {
 		// fmt.Printf("A[%d] = %d\n", j, a)
 		c := C.Get(a)
 		// fmt.Printf("C[%d] = %d\n", a, c)
-		B.Set(c, a)
+		B.Set(c-1, a)
 		C.Set(a, c-1)
 		// fmt.Println("Countingsort B", B)
 	}
-
-	return nil
 }
