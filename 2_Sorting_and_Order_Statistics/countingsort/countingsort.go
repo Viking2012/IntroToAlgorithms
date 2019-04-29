@@ -5,6 +5,7 @@ import (
 )
 
 // Countingsort is expected to run in O(nlogn) time.
+// This sorting method cannot currently manage negative numbers
 func Countingsort(A su.Interface) su.Interface {
 	B := make(su.IntSlice, A.Len())
 
