@@ -6,6 +6,7 @@ import (
 	"github.com/Viking2012/IntroToAlgorithms/2_Sorting_and_Order_Statistics/countingsort"
 	"github.com/Viking2012/IntroToAlgorithms/2_Sorting_and_Order_Statistics/heapsort"
 	"github.com/Viking2012/IntroToAlgorithms/2_Sorting_and_Order_Statistics/quicksort"
+	"github.com/Viking2012/IntroToAlgorithms/2_Sorting_and_Order_Statistics/radixsort"
 	su "github.com/Viking2012/IntroToAlgorithms/utils"
 )
 
@@ -32,4 +33,10 @@ func main() {
 	// fmt.Println("ToSort  ", toSort)
 	fromCounting := countingsort.Countingsort(toSort)
 	fmt.Println("Counted ", fromCounting)
+
+	copy(c, xs)
+	toSort = su.IntSlice(c)
+	// fmt.Println("ToSort  ", toSort)
+	fromRadix := radixsort.Radixsort(toSort)
+	fmt.Println("Radix   ", fromRadix)
 }
